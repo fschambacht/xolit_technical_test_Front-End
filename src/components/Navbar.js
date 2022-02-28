@@ -6,10 +6,7 @@ const Navbar = () => {
   return (
     <div className='navbar'>
       <Logo>
-        logo
       </Logo>
-      <Carro>
-      </Carro>
     </div>
   )
 }

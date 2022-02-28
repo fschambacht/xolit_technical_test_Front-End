@@ -1,14 +1,12 @@
-import { useState } from 'react'
 import Tarjeta from './Tarjeta'
 
-const Tarjetas = ({ productom, addProductos, count }) => {
+const Tarjetas = ({ producto, addProductos}) => {
 
   return (
     <div>
       <Tarjeta
         producto={producto}
         addProductos={addProductos}
-        count={count}
       >
       </Tarjeta>
     </div>

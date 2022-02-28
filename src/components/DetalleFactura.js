@@ -1,6 +1,6 @@
 import Carro from "./Carro"
 
-const DetalleFactura = ({productoAgregado, factura}) => {
+const DetalleFactura = ({productoAgregado, factura, getProductos }) => {
   return(
     <div>
       <ul>
@@ -13,6 +13,7 @@ const DetalleFactura = ({productoAgregado, factura}) => {
         <Carro
           factura={factura}
           productoAgregado={productoAgregado}
+          getProductos={getProductos}
         >
         </Carro>
       </div>

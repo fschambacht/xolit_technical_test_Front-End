@@ -31,7 +31,7 @@ const Producto = () => {
 
   return (
     <div onClick={getProductos} >
-      {producto.length == 0
+      {producto.length === 0
         ? <h2 className='click'>Ver Productos +</h2>
         : null}
       <Tarjeta

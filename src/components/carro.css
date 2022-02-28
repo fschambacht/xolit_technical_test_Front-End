@@ -4,5 +4,13 @@
   padding: 15px;
   border-radius: 15px;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.img {
+  height: 80px;
 }
 

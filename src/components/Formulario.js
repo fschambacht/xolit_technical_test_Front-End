@@ -2,7 +2,7 @@ import { Card } from './Card'
 import { Container } from './Container'
 import UserForm from './UserForm'
 
-const Formulario = () => {
+const Formulario = ({ productosSeleccionados, getProductos }) => {
   
   
   const compraEnvio = async (users) => {
@@ -14,8 +14,18 @@ const Formulario = () => {
       },
       body: JSON.stringify([users])
     })
+
+    await fetch('https://technical-test-xolit.herokuapp.com/update/products', {
+      method: 'POST',
+      headers: {
+        'content-Type': 'application/json'
+      },
+      body: JSON.stringify(productosSeleccionados)
+    })
     
-    console.log(users)
+    getProductos()
+
+    document.location.reload()
   }
   
   const submit = (usuario) => {
@@ -23,7 +33,7 @@ const Formulario = () => {
   }
 
   return (
-    <div style={{ marginTop: '15%' }}>
+    <div style={{ marginTop: '10px' }}>
       <Container>
         <Card>
           <div style={{ padding: 20 }}>

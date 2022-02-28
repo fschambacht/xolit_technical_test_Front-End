@@ -2,8 +2,9 @@ import { useState } from 'react'
 import './carro.css'
 import Formulario from './Formulario'
 
-const Carro = ({productoAgregado, factura}) => {
+const Carro = ({productoAgregado, factura, getProductos }) => {
   const [renderFormulario, setRenderFormulario ] = useState(false)
+  const [productosSeleccionados, setProductosSeleccionados] = useState([])
   
   const enviarProductos = async () => {
     
@@ -17,9 +18,8 @@ const Carro = ({productoAgregado, factura}) => {
       body: JSON.stringify(seleccion)
     })
 
+    setProductosSeleccionados(seleccion)
     setRenderFormulario(true)
-
-    console.log(seleccion)
   }
   
   return (
@@ -39,7 +39,8 @@ const Carro = ({productoAgregado, factura}) => {
         {
           renderFormulario 
           ? <Formulario
-
+            getProductos={getProductos}
+            productosSeleccionados={productosSeleccionados}
           /> 
           : null
         }

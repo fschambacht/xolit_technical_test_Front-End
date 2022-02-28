@@ -30,9 +30,12 @@ const Producto = () => {
   }
 
   return (
-    <div onClick={getProductos} >
+    <div  >
       {producto.length === 0
-        ? <h2 className='click'>Ver Productos +</h2>
+        ? <h2 
+          className='click'
+          onClick={getProductos}
+          >Ver Productos +</h2>
         : null}
       <Tarjeta
         producto={producto}
@@ -42,6 +45,7 @@ const Producto = () => {
         <DetalleFactura
           factura={factura}
           productoAgregado={productoAgregado}
+          getProductos={getProductos}
         >
         </DetalleFactura>
     </div>

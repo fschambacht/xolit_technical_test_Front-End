@@ -1,24 +1,12 @@
 import { useState } from "react"
 import Tarjeta from './Tarjeta'
+import DetalleFactura from './DetalleFactura'
 import './producto.css'
 
 const Producto = () => {
   const [producto, setProducto] = useState([])
 
   const [productoAgregado, setProductoAgregado] = useState([])
-  let count = {count: 1}
-
-  const addProductos = (prop) => {
-    
-    productoAgregado.map(objeto => objeto.id === prop.id ? count.count += 1 : null)
-
-    const newProd = {...prop, ...count}
-    
-    setProductoAgregado([
-      ...productoAgregado,
-      newProd
-    ])
-  }
 
   const getProductos = async () => {
     const peticion = await fetch('https://technical-test-xolit.herokuapp.com/products')
@@ -37,9 +25,10 @@ const Producto = () => {
     for(const i in objetoBuscado) {
       nuevoArray.push(objetoBuscado[i])
     }
+
     return nuevoArray
   }
-  
+
   return (
     <div onClick={getProductos} >
       {producto.length == 0
@@ -47,14 +36,14 @@ const Producto = () => {
         : null}
       <Tarjeta
         producto={producto}
-        addProductos={addProductos}
+        productoAgregado={productoAgregado}
+        setProductoAgregado={setProductoAgregado}
       ></Tarjeta>
-      <ul>
-        { 
-          factura(productoAgregado,'id').map(prod => <li key={prod.id}>{prod.nombre}---{prod.count}</li>
-        )
-        }
-      </ul>
+        <DetalleFactura
+          factura={factura}
+          productoAgregado={productoAgregado}
+        >
+        </DetalleFactura>
     </div>
   )
 }
